@@ -1,0 +1,15 @@
+#importing required modules
+import urllib.request
+import urllib.parse
+import urllib.error
+from bs4 import BeautifulSoup
+
+
+x = input('Enter the link: ')                                    #asking user for input
+html = urllib.request.urlopen(x).read()                          #using urllib opening the document and reading it
+s = BeautifulSoup(html, 'html.parser')                           #using BeautifulSoup pulling the data out of html or xml file.
+tag = s('span')                                                  #selecting only the tags which has 'span' i.e <span>
+ssum = 0                                                         #assigning new variable to zero
+for tags in tag:                                                 # looping through our tags
+    ssum += int(tags.contents[0])                               #converting it to int and doing the sum of the values in span which are at zero index.
+print(ssum)                                                      #printing it to check the sum of the values
